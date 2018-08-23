@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  </head>
+  <script src="lib/red5pro/red5pro-sdk.min.js"></script>
+  <body>
+    <div id="app">
+      <div class="ice-background">
+      <div class="test-notification">
+              <p>The Two-Way example requires access to a service that returns a stream listing. You may run into Cross-Origin Resource Sharing (<strong>CORS</strong>) issues if trying to use this example without the proper <strong>CORS</strong> settings provided by the server.</p>
+        <br/>
+        <p>It is recommended to view this example as part of the <code>webrtcexamples</code> webapp shipped with the <a href="https://account.red5pro.com/download" target="_blank">Red5 Pro Server</a>.</p>
+      </div>
+      </div>
+      <h1 class="centered">Two-Way Test</h1>
+      <hr />
+      <div class="float-left float-left-two-way">
+        <h2 class="centered"><em>Publisher Stream</em>: <span id="pub-stream-title"></span></h2>
+        <p id="pub-status-field" class="centered status-field">On hold.</p>
+        <div class="centered red5pro-media-background">
+        <video id="red5pro-publisher"
+                controls autoplay muted playsinline
+                width="320" height="240">
+        </video>
+        </div>
+      </div>
+      <div class="float-right float-right-two-way">
+        <h2 class="centered"><em>Subscriber Stream</em>: <span id="sub-stream-title"></span></h2>
+        <p id="sub-status-field" class="centered status-field">On hold.</p>
+        <div class="centered">
+        <video id="red5pro-subscriber"
+                controls autoplay playsinline
+                class="red5pro-media red5pro-media-background"
+                width="320" height="240">
+        </video>
+        </div>
+      </div>
+    </div>
+    <script src="/static/script/publisher-status.js"></script>
+    <script src="/static/script/subscription-status.js"></script>
+    <script src="twoway.js"></script>
+  </body>
+</html>

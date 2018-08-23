@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+	  <style type="text/css">
+      .test {
+        border: 2px #350;
+        border-style: solid;
+        border-width: 1px;
+        height: 300px;
+      width: 400px;
+      }
+      .spnlft{
+        margin-left: 12%
+      }
+    </style>
+    <!-- *Recommended WebRTC Shim -->
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  </head>
+  <body>
+    <!-- video containers -->
+    <!-- publisher -->
+   <!--  <div>
+		<span class="spnlft">publisher </span><br>
+      <video id="red5pro-publisher" class="test" width="640" height="480" muted autoplay></video>
+    </div> -->
+    <!-- subscriber -->
+    <div>
+		<span class="spnlft">Subscriber </span><br>
+      <video id="red5pro-subscriber" class="test" width="640" height="480" controls autoplay></video>
+    </div>
+    <!-- Red5 Pro SDK -->
+    <link href="lib/red5pro/red5pro-media.css" rel="stylesheet">
+    <!-- Fullscreen shim. -->
+    <script src="lib/screenfull/screenfull.min.js"></script>
+    <script src="lib/red5pro/red5pro-sdk.min.js"></script>
+     <script src="main.js"></script>
+    <!-- Create Pub/Sub -->
+    <script>
+      (function(red5prosdk) {
+        'use strict';
+
+        var rtcPublisher = new red5prosdk.RTCPublisher();
+        
+        var rtcSubscriber = new red5prosdk.RTCSubscriber();
+        var config = {
+          protocol: 'wss',
+          host: 'gurunow.guru',
+          port: 8083,
+          app: 'live',
+          streamName: 'mystream',
+          iceServers: [{urls: 'stun:stun2.l.google.com:19302'}],
+          tcpMuxPolicy: 'negotiate'
+        };
+
+        function subscribe () {
+          rtcSubscriber.init(config)
+            .then(function () {
+              return rtcSubscriber.subscribe();
+            })
+            .then(function () {
+              console.log('Playing!');
+            })
+            .catch(function (err) {
+              console.log('Could not play: ' + err);
+            });
+        }
+
+        rtcPublisher.init(config)
+          .then(function () {
+            // On broadcast started, subscribe.
+            rtcPublisher.on(red5prosdk.PublisherEventTypes.PUBLISH_START, subscribe);
+            return rtcPublisher.publish();
+          })
+          .then(function () {
+            console.log('Publishing!');
+          })
+          .catch(function (err) {
+            console.error('Could not publish: ' + err);
+          });
+ 
+      }(window.red5prosdk));
+    </script>
+  </body>
+</html>

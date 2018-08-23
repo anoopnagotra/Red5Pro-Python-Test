@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Recommended shim for cross-browser WebRTC support. -->
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <!-- Default Red5 Pro Playback Control styles. -->
+    <link href="lib/red5pro/red5pro-media.css" rel="stylesheet">
+    <!-- Fullscreen shim. -->
+    <script src="lib/screenfull/screenfull.min.js"></script>
+  </head>
+  <body>
+    <video id="red5pro-subscriber" class="red5pro-media red5pro-media-background" autoplay controls> </video>
+    <!-- Exposes `red5prosdk` on the window global. -->
+    <script src="lib/red5pro/red5pro-sdk.min.js"></script>
+    <!-- Example script below. -->
+    <script src="main.js"></script>
+  </body>
+</html>

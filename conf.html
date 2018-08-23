@@ -1,0 +1,34 @@
+<html>
+  <body>
+    <div id="app">
+      <div class="ice-background">
+      <h1 class="centered">Two-Way Test</h1>
+      <hr />
+      <div class="float-left float-left-two-way">
+        <h2 class="centered"><em>Publisher Stream</em>: <span id="pub-stream-title"></span></h2>
+        <p id="pub-status-field" class="centered status-field">On hold.</p>
+        <div class="centered red5pro-media-background">
+        <video id="red5pro-publisher"
+                controls autoplay muted playsinline
+                width="320" height="240">
+        </video>
+        </div>
+      </div>
+      <div class="float-right float-right-two-way">
+        <h2 class="centered"><em>Subscriber Stream</em>: <span id="sub-stream-title"></span></h2>
+        <p id="sub-status-field" class="centered status-field">On hold.</p>
+        <div class="centered">
+        <video id="red5pro-subscriber"
+                controls autoplay playsinline
+                class="red5pro-media red5pro-media-background"
+                width="320" height="240">
+        </video>
+        </div>
+      </div>
+    </div>
+    {{> body-scripts}}
+    <script src="../../script/publisher-status.js"></script>
+    <script src="../../script/subscription-status.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
